@@ -1,17 +1,24 @@
 module.exports = function(grunt){
 	grunt.initConfig({
+		sass: {
+			dist: {
+				files: {
+					"css/master.css": "scss/master.scss"
+				}
+			}
+		},
 		csslint: {
 			strict: {
 				options: {
 					import: 2
 				},
-				src: ["css/*.css", "!*.min.css"]
+				src: ["css/master.css"]
 			},
 			lax: {
 				options: {
 					import: false
 				},
-				src: ["css/*.css", "!*.min.css"]
+				src: ["css/master.css"]
 			}
 		},
 		cssmin: {
@@ -37,8 +44,8 @@ module.exports = function(grunt){
 		},
 		watch: {
 			scripts: {
-				files: ["css/master.css", "js/script.js"],
-				tasks: ["csslint", "cssmin", "jshint:all", "uglify"]
+				files: ["scss/master.scss", "js/script.js"],
+				tasks: ["sass", "csslint:strict", "cssmin", "jshint:all", "uglify"]
 			},
 		}
 	});
@@ -49,6 +56,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-csslint");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
+	grunt.loadNpmTasks("grunt-contrib-sass");
 
 	// grunt.registerTask();
 };
