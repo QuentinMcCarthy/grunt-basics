@@ -11,19 +11,26 @@ module.exports = function(grunt){
 				}]
 			}
 		},
+		uglify: {
+			my_target: {
+				files: {
+					"js/script.min.js": ["js/script.js"]
+				}
+			}
+		},
 		watch: {
 			scripts: {
 				files: ["css/master.css"],
 				tasks: ["cssmin"]
 			},
-		},
+		}
 	});
 
 	// grunt.loadNpmTasks();
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
-	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 
 	// grunt.registerTask();
-	grunt.registerTask("minifycss", ["cssmin"]);
 	grunt.registerTask("overwatch", ["watch"]);
 };
