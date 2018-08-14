@@ -1,5 +1,19 @@
 module.exports = function(grunt){
 	grunt.initConfig({
+		csslint: {
+			strict: {
+				options: {
+					import: 2
+				},
+				src: ["css/*.css", "!*.min.css"]
+			},
+			lax: {
+				options: {
+					import: false
+				},
+				src: ["css/*.css", "!*.min.css"]
+			}
+		},
 		cssmin: {
 			target: {
 				files: [{
@@ -20,8 +34,8 @@ module.exports = function(grunt){
 		},
 		watch: {
 			scripts: {
-				files: ["css/master.css"],
-				tasks: ["cssmin"]
+				files: ["css/master.css", "js/script.js"],
+				tasks: ["csslint", "cssmin", "uglify"]
 			},
 		}
 	});
@@ -30,7 +44,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-contrib-csslint");
 
 	// grunt.registerTask();
-	grunt.registerTask("overwatch", ["watch"]);
 };
