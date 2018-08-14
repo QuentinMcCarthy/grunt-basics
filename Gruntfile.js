@@ -25,6 +25,9 @@ module.exports = function(grunt){
 				}]
 			}
 		},
+		jshint: {
+			all: ["js/script.js"]
+		},
 		uglify: {
 			my_target: {
 				files: {
@@ -35,7 +38,7 @@ module.exports = function(grunt){
 		watch: {
 			scripts: {
 				files: ["css/master.css", "js/script.js"],
-				tasks: ["csslint", "cssmin", "uglify"]
+				tasks: ["csslint", "cssmin", "jshint:all", "uglify"]
 			},
 		}
 	});
@@ -45,6 +48,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-csslint");
+	grunt.loadNpmTasks("grunt-contrib-jshint");
 
 	// grunt.registerTask();
 };
