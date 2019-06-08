@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/QuentinMcCarthy/grunt-basics#readme",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.4.0"
   },
   "devDependencies": {
     "grunt": "^1.0.3",
